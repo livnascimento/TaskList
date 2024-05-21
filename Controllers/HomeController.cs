@@ -15,6 +15,7 @@ namespace TaskList.Controllers
 
         public IActionResult Index()
         {
+            ViewBag.date = DateOnly.FromDateTime(DateTime.Now);
             return View();
         }
 

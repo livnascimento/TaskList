@@ -1,0 +1,54 @@
+﻿@model List<TaskList.Models.TaskItem>
+
+@{
+    var date = DateTime.Now;
+    var weekDay = date.DayOfWeek;
+}
+
+<div class="container">
+
+    <div class="row mb-4">
+        <div class="col-10">
+            <h4>Lista de Tarefas</h4>
+            <p>@weekDay, @date.ToString("dd/MM/yy")</p>
+        </div>
+        <div class="col-2">
+            <a class="btn btn-primary float-end" asp-area="" asp-controller="TaskItem" asp-action="Create">Nova Tarefa</a>
+        </div>
+    </div>
+    <div class="row">
+
+        @foreach (var task in Model)
+        {
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-2">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" onclick="">
+                                </div>
+                            </div>
+                            <div class="col-10 ">
+                                <h5 class="card-title">@task.Description</h5>
+                                <p class="card-subtitle mb-2 text-body-secondary">@task.InitialDate.ToString("dd/MM/yyyy")</p>
+                                <hr style="opacity: 10%;" />
+                                <p class="card-text">
+                                    Status:  @if (task.Status == false)
+                                    {
+                                        @Html.Raw("A fazer")
+                                    }
+                                    else
+                                    {
+                                        @Html.Raw("Feito")
+                                    }
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

@@ -1,8 +1,14 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    var date = ViewBag.date;
+    var weekDay = ViewBag.date.DayOfWeek;
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="row mb-4">
+    <div class="col-10">
+        <h4>Lista de Tarefas</h4>
+        <p>@weekDay, @date.ToString("dd/MM/yy")</p>
+    </div>
+    <div class="col-2">
+        <a class="btn btn-primary float-end" asp-area="" asp-controller="TaskItem" asp-action="Create">Nova Tarefa</a>
+    </div>
 </div>
